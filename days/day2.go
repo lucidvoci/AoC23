@@ -1,24 +1,14 @@
 package days
 
 import (
-	"bufio"
+	"advent/util"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
 
 func Day2() {
-	filePath := "./inputs/input2.txt"
-
-	file, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println("Error opening file:", err)
-		return
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
+	scanner := util.GetScanner(2)
 
 	var sum int
 	for scanner.Scan() {
@@ -28,9 +18,7 @@ func Day2() {
 	}
 	fmt.Println(sum)
 
-	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
-	}
+	util.CloseScanner()
 }
 
 // Game 1: 1 red, 5 blue, 1 green; 16 blue, 3 red; 6 blue, 5 red; 4 red, 7 blue, 1 green

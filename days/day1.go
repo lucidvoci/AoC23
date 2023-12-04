@@ -1,26 +1,16 @@
 package days
 
 import (
-	"bufio"
+	"advent/util"
 	"fmt"
 	"math"
-	"os"
 	"strings"
 )
 
 var stringNums = []string{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
 
 func Day1() {
-	filePath := "./inputs/input1.txt"
-
-	file, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println("Error opening file:", err)
-		return
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
+	scanner := util.GetScanner(1)
 
 	var sum int
 	for scanner.Scan() {
@@ -29,10 +19,7 @@ func Day1() {
 		sum += concatDigits(s, e)
 	}
 	fmt.Println(sum)
-
-	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
-	}
+	util.CloseScanner()
 }
 
 func getNumbers(line string) (int, int) {

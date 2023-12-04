@@ -1,26 +1,18 @@
 package days
 
 import (
-	"bufio"
+	"advent/util"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
 
+const rs int = 206
+
 func Day4() {
-	filePath := "./inputs/input4.txt"
+	scanner := util.GetScanner(4)
 
-	file, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println("Error opening file:", err)
-		return
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-
-	var res [206]int
+	var res [rs]int
 	for i := range res {
 		res[i] = 1
 	}
@@ -38,12 +30,10 @@ func Day4() {
 	}
 	fmt.Println(sum)
 
-	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
-	}
+	util.CloseScanner()
 }
 
-func copies(line string, gameNum int, res *[206]int) {
+func copies(line string, gameNum int, res *[rs]int) {
 	win := make(map[string]bool)
 	game := strings.Split(line, ":")
 	nums := strings.Split(game[1], "|")

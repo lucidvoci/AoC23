@@ -1,24 +1,14 @@
 package days
 
 import (
-	"bufio"
+	"advent/util"
 	"fmt"
-	"os"
 )
 
 const s int = 140
 
 func Day3() {
-	filePath := "./inputs/input3.txt"
-
-	file, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println("Error opening file:", err)
-		return
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
+	scanner := util.GetScanner(3)
 
 	var sum int
 	var schema [s][s]byte
@@ -31,9 +21,7 @@ func Day3() {
 	sum = numSum(&schema)
 	fmt.Println(sum)
 
-	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
-	}
+	util.CloseScanner()
 }
 
 type Spot struct {
