@@ -21,8 +21,10 @@ func main() {
 		days.Day2()
 	case "3":
 		days.Day3()
+	case "4":
+		days.Day4()
 	default:
-		fmt.Println("Not an advent day.")
+		days.Day0()
 	}
 
 }
